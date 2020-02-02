@@ -39,16 +39,21 @@ class TreeTestCase(TestCase):
         self.assertDictEqual(test_result, self.node_2_tree_correct_result)
 
     def test_node_3_tree(self):
-        """Test subtree for index 2 """
+        """Test subtree for index 3 """
         test_result = get_tree_by_id(node_id=3)
         self.assertDictEqual(test_result, self.node_3_tree_correct_result)
 
     def test_node_4_tree(self):
-        """Test subtree for index 2 """
+        """Test subtree for index 4 """
         test_result = get_tree_by_id(node_id=4)
         self.assertDictEqual(test_result, self.node_4_tree_correct_result)
 
     def test_node_5_tree(self):
-        """Test subtree for index 2 """
+        """Test subtree for index 5 """
+        test_result = get_tree_by_id(node_id=5) # not 5 does not exist
+        self.assertEqual(test_result, None)
+
+    def test_node_0_tree(self):
+        """Test subtree for index 0 """
         test_result = get_tree_by_id(node_id=5) # not 5 does not exist
         self.assertEqual(test_result, None)
