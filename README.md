@@ -16,13 +16,21 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 4. Execution of migrations:
-```./manage.py migrate```
+```
+./manage.py migrate
+```
 6. Fixtures DB fill (if necessary)
-```./manage.py loaddata tree/fixtures/initial_data.json```
+```
+./manage.py loaddata tree/fixtures/initial_data.json
+```
 7. Run test :
-```./manage.py test```
+```
+./manage.py test
+```
 8. run server
-```./manage.py runserver 127.0.0.1:8000````
+```
+./manage.py runserver 127.0.0.1:8000
+```
 
 ### http://127.0.0.1:8000/ - Get full tree ###
 ### http://127.0.0.1:8000/ - Get subtree by node id ###
