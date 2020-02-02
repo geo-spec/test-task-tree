@@ -18,7 +18,7 @@ from django.urls import path, include
 from tree import views as tree_views
 
 urlpatterns = [
-    path('', include('tree.urls')),
+    path('', tree_views.index),
     path('<int:node_id>/', tree_views.tree_by_node_id),
 
 ]
