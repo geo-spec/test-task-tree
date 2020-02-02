@@ -7,12 +7,24 @@ from tree.models import Tree
 
 
 def index(request):
-    pv1 = Tree.objects.get(id=1)
-    result = get_child(pv1)
+    result = get_tree()
     return HttpResponse("Tree lock - {}".format(result))
 
+
+def tree_by_node_id(request, node_id):
+    try:
+        root_row = Tree.objects.get(id=node_id)
+    except Tree.DoesNotExist:
+        return HttpResponse("Element {} does not exist".format(node_id))
+
+    result = get_child(root_row)
+
+    return HttpResponse("{}".format(result))
+
+
 def get_tree():
-    pass
+    root = get_root()
+    return get_child(root)
 
 
 def get_child(parent):

@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from tree import views as tree_views
 
 urlpatterns = [
-    path('tree/', include('tree.urls')),
-    path('admin/', admin.site.urls),
+    path('', include('tree.urls')),
+    path('<int:node_id>/', tree_views.tree_by_node_id),
+
 ]
