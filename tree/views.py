@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 # Create your views here.
 
 from django.http import HttpResponse
@@ -7,22 +5,29 @@ from tree.models import Tree
 
 
 def index(request):
-    result = get_tree()
-    return HttpResponse("Tree lock - {}".format(result))
+    result = get_full_tree()
+    return HttpResponse("Full tree - {}".format(result))
 
 
 def tree_by_node_id(request, node_id):
+    result = get_tree_by_id(node_id=node_id)
+
+    if result is None:
+        return HttpResponse("Element {} does not exist".format(node_id))
+
+    return HttpResponse("Tree by node id - {}".format(result))
+
+
+def get_tree_by_id(node_id):
     try:
         root_row = Tree.objects.get(id=node_id)
     except Tree.DoesNotExist:
-        return HttpResponse("Element {} does not exist".format(node_id))
+        return None # node does not exist
 
-    result = get_child(root_row)
-
-    return HttpResponse("{}".format(result))
+    return get_child(root_row)
 
 
-def get_tree():
+def get_full_tree():
     root = get_root()
     return get_child(root)
 
